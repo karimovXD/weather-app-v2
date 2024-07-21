@@ -54,11 +54,13 @@ const ChartPanel: React.FC<Props> = ({ lat, long }) => {
               precipitationSumChartData as precipitationSumChartType
             }
             loading={loading}
+            error={error}
           />
         </div>
         <div className="w-full sm:w-[50%] h-auto">
           <PrecipitationProbabilityChart
             loading={loading}
+            error={error}
             precipitationProbabilityChartData={
               precipitationProbabilityChartData as precipitationProbabilityChartType
             }
@@ -70,6 +72,7 @@ const ChartPanel: React.FC<Props> = ({ lat, long }) => {
           humidityChartData={humidityChartData as humidityChartType}
           currentHumidity={currentHumidity}
           loading={loading}
+          error={error}
         />
       </div>
     </div>

@@ -2,12 +2,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 import React from "react";
 
-const ChartSkeleton = ({
-  height,
-  maxHeight,
-}: {
-  height: number;
-  maxHeight: number;
-}) => <Skeleton className={`h-${height} lg:h-${maxHeight} w-full`} />;
+const ChartSkeleton = () => (
+  <Skeleton className={`h-[250px] lg:h-[300px] w-full`} />
+);
 
 export default ChartSkeleton;

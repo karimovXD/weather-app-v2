@@ -31,15 +31,21 @@ type Props = {
     humidity: number;
   }[];
   loading: true | false;
+  error: string | null;
 };
 
 const HumidityChart = ({
   currentHumidity,
   humidityChartData,
   loading,
+  error,
 }: Props) => {
   if (loading) {
-    return <ChartSkeleton height={44} maxHeight={80} />;
+    return <ChartSkeleton />;
+  } else {
+    if (error) {
+      console.log(error);
+    }
   }
 
   return (
@@ -71,7 +77,7 @@ const HumidityChart = ({
               tickLine={false}
               axisLine={false}
               tickMargin={8}
-              tickFormatter={(date) => {
+              tickFormatter={(date: string) => {
                 const d = new Date(date);
                 return d.toLocaleTimeString("en-US", {
                   hour: "numeric",

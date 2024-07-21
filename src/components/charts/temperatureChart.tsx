@@ -51,7 +51,7 @@ const TemperatureChart = ({
   } satisfies ChartConfig;
 
   if (loading) {
-    return <ChartSkeleton height={32} maxHeight={96} />;
+    return <ChartSkeleton />;
   } else {
     if (error) {
       console.log(error);
@@ -64,27 +64,23 @@ const TemperatureChart = ({
         <CardHeader>
           <CardTitle>Temperature</CardTitle>
           <CardDescription>
-            <>
-              <div className="flex items-center gap-x2">
-                <div className="text-muted-foreground">
-                  <p className="font-semibold">Now</p>
-                  <p className="text-4xl font-bold">
-                    {currentTemp.toFixed(1)}°C
-                  </p>
-                </div>
-                <div>
-                  <Image
-                    src={`https://www.weatherbit.io/static/img/icons/${weatherCodes[weatherCode].icon}.png`}
-                    alt={weatherCodes[weatherCode].label}
-                    width={75}
-                    height={75}
-                  />
-                </div>
+            <div className="flex items-center gap-x2">
+              <div className="text-muted-foreground">
+                <p className="font-semibold">Now</p>
+                <p className="text-4xl font-bold">{currentTemp.toFixed(1)}°C</p>
               </div>
-              <p className="text-xs">
-                Feels like {currentApparentTemp.toFixed(1)}
-              </p>
-            </>
+              <div>
+                <Image
+                  src={`https://www.weatherbit.io/static/img/icons/${weatherCodes[weatherCode].icon}.png`}
+                  alt={weatherCodes[weatherCode].label}
+                  width={75}
+                  height={75}
+                />
+              </div>
+            </div>
+            <p className="text-xs">
+              Feels like {currentApparentTemp.toFixed(1)}
+            </p>
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -103,7 +99,7 @@ const TemperatureChart = ({
                 tickLine={false}
                 axisLine={false}
                 tickMargin={8}
-                tickFormatter={(date) => {
+                tickFormatter={(date: string) => {
                   const d = new Date(date);
                   return d.toLocaleTimeString("en-US", {
                     hour: "numeric",

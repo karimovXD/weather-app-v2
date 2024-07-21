@@ -22,12 +22,19 @@ type Props = {
     precipitation: string;
   }[];
   loading: true | false;
+  error: string | null;
 };
-function PrecipitationSumChart({ precipitationSumChartData, loading }: Props) {
-  console.log(precipitationSumChartData);
-  
+function PrecipitationSumChart({
+  precipitationSumChartData,
+  loading,
+  error,
+}: Props) {
   if (loading) {
-    return <ChartSkeleton height={64} maxHeight={80} />;
+    return <ChartSkeleton />;
+  } else {
+    if (error) {
+      console.log(error);
+    }
   }
   return (
     <Card className="w-full">
@@ -43,7 +50,7 @@ function PrecipitationSumChart({ precipitationSumChartData, loading }: Props) {
               tickLine={false}
               tickMargin={10}
               axisLine={false}
-              tickFormatter={(date) => {
+              tickFormatter={(date: string) => {
                 const d = new Date(date);
                 return d.toLocaleTimeString("en-US", {
                   hour: "2-digit",

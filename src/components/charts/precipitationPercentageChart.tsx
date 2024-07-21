@@ -26,14 +26,20 @@ type Props = {
     date: string;
     precipitationProbability: number;
   }[];
+  error: string | null;
 };
 
 function PrecipitationProbabilityChart({
   loading,
   precipitationProbabilityChartData,
+  error,
 }: Props) {
   if (loading) {
-    return <ChartSkeleton height={64} maxHeight={80} />;
+    return <ChartSkeleton />;
+  } else {
+    if (error) {
+      console.log(error);
+    }
   }
 
   return (
@@ -57,7 +63,7 @@ function PrecipitationProbabilityChart({
               tickLine={false}
               axisLine={false}
               tickMargin={8}
-              tickFormatter={(date) => {
+              tickFormatter={(date: string) => {
                 const d = new Date(date);
                 return d.toLocaleTimeString("en-US", {
                   hour: "2-digit",
