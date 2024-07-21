@@ -27,7 +27,7 @@ const chartConfig = {
 type Props = {
   currentHumidity: number;
   humidityChartData: {
-    data: string;
+    date: string;
     humidity: number;
   }[];
   loading: true | false;

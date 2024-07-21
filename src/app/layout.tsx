@@ -7,6 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "weather-app",
   description: "serach your city weather details",
+  icons: "/assets/logos/next.svg",
 };
 
 export default function RootLayout({

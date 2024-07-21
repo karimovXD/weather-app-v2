@@ -52,6 +52,10 @@ const TemperatureChart = ({
 
   if (loading) {
     return <ChartSkeleton height={32} maxHeight={96} />;
+  } else {
+    if (error) {
+      console.log(error);
+    }
   }
 
   return (

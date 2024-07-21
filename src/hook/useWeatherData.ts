@@ -2,15 +2,18 @@ import { useEffect, useState } from "react";
 
 import { fetchWeatherData } from "@/service/fetchWeather";
 
+//types
+import { temperatureChartType, humidityChartType, precipitationSumChartType, precipitationProbabilityChartType } from "@/types/fetchTypes";
+
 export function useWeatherData(lat: string, long: string) {
-    const [temperatureChartData, setTemperatureChartData] = useState<any>(null);
-    const [humidityChartData, setHumidityChartData] = useState<any>(null);
+    const [temperatureChartData, setTemperatureChartData] = useState<null | temperatureChartType>(null);
+    const [humidityChartData, setHumidityChartData] = useState<null | humidityChartType>(null);
     const [precipitationSumChartData, setPrecipitationSumChartData] =
-        useState<any>(null);
+        useState<null | precipitationSumChartType>(null);
     const [
         precipitationProbabilityChartData,
         setPrecipitationProbabilityChartData,
-    ] = useState<any>(null);
+    ] = useState<null | precipitationProbabilityChartType>(null);
 
     const [weatherCode, setWeatherCode] = useState<number>(0);
     const [currentTemp, setCurrentTemp] = useState<number>(0);

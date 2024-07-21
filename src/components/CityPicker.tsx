@@ -20,8 +20,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+//icon
 import { MapPin } from "lucide-react";
-
 //types
 import { CountryType, StateType, CityType } from "@/types/selectTypes";
 //components
@@ -95,12 +95,12 @@ const CityPicker: FC = () => {
   };
 
   const handleSubmit = () => {
-    if (selectedCountry || selectedState || selectedCity) {
+    if (selectedCountry && selectedState && selectedCity) {
       router.push(
         `/weather/${selectedCountry?.label}/${selectedState?.value.latitude}/${selectedCity?.value.longtidude}`
       );
     } else {
-      alert("please fill all poly");
+      alert("Please select country, state and city");
     }
   };
 

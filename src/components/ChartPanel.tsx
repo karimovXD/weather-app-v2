@@ -1,11 +1,20 @@
 "use client";
 import React from "react";
 
+//hookAndOthers
 import { useWeatherData } from "@/hook/useWeatherData";
 import TemperatureChart from "./charts/temperatureChart";
 import HumidityChart from "./charts/humidityChart";
 import PrecipitationSumChart from "./charts/precipitationSumChart";
 import PrecipitationProbabilityChart from "@/components/charts/precipitationPercentageChart";
+
+//types
+import {
+  temperatureChartType,
+  humidityChartType,
+  precipitationSumChartType,
+  precipitationProbabilityChartType,
+} from "@/types/fetchTypes";
 
 type Props = {
   lat: string;
@@ -30,7 +39,7 @@ const ChartPanel: React.FC<Props> = ({ lat, long }) => {
     <div className="flex flex-col gap-4">
       <div>
         <TemperatureChart
-          temperatureChartData={temperatureChartData}
+          temperatureChartData={temperatureChartData as temperatureChartType}
           currentTemp={currentTemp}
           currentApparentTemp={currentApparentTemp}
           weatherCode={weatherCode}
@@ -38,25 +47,27 @@ const ChartPanel: React.FC<Props> = ({ lat, long }) => {
           error={error}
         />
       </div>
-      <div className="flex items-start justify-between gap-4">
-        <div className="w-[50%] h-auto">
+      <div className="flex flex-col items-start justify-between gap-4 sm:flex-row">
+        <div className="w-full sm:w-[50%] h-auto">
           <PrecipitationSumChart
-            precipitationSumChartData={precipitationSumChartData}
+            precipitationSumChartData={
+              precipitationSumChartData as precipitationSumChartType
+            }
             loading={loading}
           />
         </div>
-        <div className="w-[50%] h-auto">
+        <div className="w-full sm:w-[50%] h-auto">
           <PrecipitationProbabilityChart
             loading={loading}
             precipitationProbabilityChartData={
-              precipitationProbabilityChartData
+              precipitationProbabilityChartData as precipitationProbabilityChartType
             }
           />
         </div>
       </div>
       <div>
         <HumidityChart
-          humidityChartData={humidityChartData}
+          humidityChartData={humidityChartData as humidityChartType}
           currentHumidity={currentHumidity}
           loading={loading}
         />

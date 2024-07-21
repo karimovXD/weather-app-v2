@@ -18,12 +18,14 @@ const chartConfig = {
 //type
 type Props = {
   precipitationSumChartData: {
-    data: string;
+    date: string;
     precipitation: string;
   }[];
   loading: true | false;
 };
 function PrecipitationSumChart({ precipitationSumChartData, loading }: Props) {
+  console.log(precipitationSumChartData);
+  
   if (loading) {
     return <ChartSkeleton height={64} maxHeight={80} />;
   }
